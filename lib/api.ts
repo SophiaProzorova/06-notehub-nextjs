@@ -7,7 +7,6 @@ interface FetchNotesResponse {
 }
 
 const noteHubAPIUrl = `https://notehub-public.goit.study/api/notes`;
-axios.defaults.baseURL = "https://next-v1-notes-api.goit.study";
 
 const API_KEY = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
 
@@ -16,14 +15,8 @@ const headers = {
     accept: 'application/json',
     Authorization: `Bearer ${API_KEY}`    
 };
-
-export const getNotes = async () => {
-    const res = await axios.get<FetchNotesResponse>("/notes");
-    return res.data;
-};
-
 export const fetchNoteById = async (id: string) => {
-    const res = await axios.get<Note>(`/notes/${id}`);
+    const res = await axios.get<Note>(`${noteHubAPIUrl}/${id}`, { headers });
 
     return res.data;
 }
