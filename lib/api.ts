@@ -7,9 +7,7 @@ interface FetchNotesResponse {
 }
 
 const noteHubAPIUrl = `https://notehub-public.goit.study/api/notes`;
-
 const API_KEY = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
-
 const headers = {
     'Content-Type': 'application/json',
     accept: 'application/json',
@@ -35,7 +33,7 @@ export const  fetchNotes = async (search: string, page: number): Promise<FetchNo
     const response = await axios.get<FetchNotesResponse>(
         noteHubAPIUrl,
         options
-    );    
+    );
 
     return ({
         notes: response.data.notes,
