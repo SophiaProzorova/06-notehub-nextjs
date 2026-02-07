@@ -59,8 +59,8 @@ export const createNote = async ({title, content, tag}: {title: string, content:
     return response.data;
 };
 
-export const deleteNote = async (note: Note): Promise<Note> => {
-    const url = `${noteHubAPIUrl}/${note.id}`;
+export const deleteNote = async (noteId: string): Promise<Note> => {
+    const url = `${noteHubAPIUrl}/${noteId}`;
 
     const response = await axios.delete<Note>(
         url,
